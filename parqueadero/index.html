@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Parqueadero - ULEAM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="nav">
+    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
+    <div class="navegacion">
+      <ul class="nav-list">
+        <li class="nav-item"><a href=""><i class="fa-solid fa-car"></i> Agregar carro</a></li>
+        <li class="nav-item"><a href="../listado/lista.html"><i class="fa-solid fa-table-list"></i> Lista de carros</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Control de Parqueadero - ULEAM</h1>
+
+    <section class="form-section">
+      <h2>Registrar Entrada</h2>
+      <form id="formulario">
+        <label for="placa">Matrícula del vehículo:</label>
+        <input type="text" id="placa" placeholder="Ej: ABC-1234" required>
+
+        <label for="conductor">Nombre del conductor:</label>
+        <input type="text" id="conductor" placeholder="Ej: Juan Pérez" required>
+
+        <label for="tipo_conductor">Tipo de usuario:</label>
+        <select id="tipo_conductor" required>
+          <option value="">Seleccione...</option>
+          <option value="Estudiante">Estudiante</option>
+          <option value="Docente">Docente</option>
+          <option value="Administrativo">Administrativo</option>
+          <option value="Visitante">Visitante</option>
+        </select>
+
+        <button type="submit">Registrar Vehículo</button>
+      </form>
+    </section>
+    
+    <section class="status-section">
+      <h2>Estado del Parqueadero</h2>
+      <p><strong>Espacios disponibles:</strong> <span id="espacio_disponible">20</span></p>
+    </section>
+
+    <section class="table-section">
+      <h2>Vehículos en el Parqueadero</h2>
+      <div class="vehicle-grid" id="cartar_de_vehiculos">
+        <!-- Las tarjetas se insertarán dinámicamente aquí -->
+      </div>
+    </section>
+
+  </div>
+  <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
