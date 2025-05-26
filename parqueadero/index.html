@@ -26,7 +26,7 @@
     <section class="form-section">
       <h2>Registrar Entrada</h2>
       <form id="formulario">
-        <label for="placa">Matrícula del vehículo:</label>
+        <label for="placa">Placa del vehículo:</label>
         <input type="text" id="placa" placeholder="Ej: ABC-1234" required>
 
         <label for="conductor">Nombre del conductor:</label>
@@ -40,22 +40,61 @@
           <option value="Administrativo">Administrativo</option>
           <option value="Visitante">Visitante</option>
         </select>
-
+        <label for="area_estacionamiento">Lugar de estacionamiento:</label>
+        <select id="tipo_conductor" required>
+          <option value="">Seleccione...</option>
+          <option value="Estacionamiento Puerta 1">Estacionamiento Puerta 1</option>
+          <option value="Estacionamiento Puerta 2">Estacionamiento Puerta 2</option>
+          <option value="Estacionamiento Puerta 3">Estacionamiento Puerta 3</option>
+        </select>
         <button type="submit">Registrar Vehículo</button>
       </form>
     </section>
     
-    <section class="status-section">
-      <h2>Estado del Parqueadero</h2>
-      <p><strong>Espacios disponibles:</strong> <span id="espacio_disponible">20</span></p>
-    </section>
+    <section class="tabla-section">
+      <div class="section-header">
+        <h2>Vehículos Estacionados</h2>
+        <p><span id="espacio_disponible">20</span>/20 espacios disponibles</p>
+        <div class="search-box">
+          <input type="text" id="search-vehicle" placeholder="Buscar por placa...">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
 
-    <section class="table-section">
-      <h2>Vehículos en el Parqueadero</h2>
       <div class="vehicle-grid" id="cartar_de_vehiculos">
         <!-- Las tarjetas se insertarán dinámicamente aquí -->
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
   </div>
   <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous"></script>
