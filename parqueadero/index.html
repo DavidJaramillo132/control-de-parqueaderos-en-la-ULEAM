@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de Parqueadero - ULEAM</title>
+  <link rel="stylesheet" href="../base.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -13,8 +15,9 @@
     <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
     <nav class="navegacion">
       <ul class="nav-list">
-        <li class="nav-item"><a href="#"><i class="fa-solid fa-car"></i> Agregar carro</a></li>
-        <li class="nav-item"><a href="../listado/lista.html"><i class="fa-solid fa-table-list"></i> Lista de carros</a></li>
+        <li class="nav-item"><a href="#formulario-section"><i class="fa-solid fa-car"></i> Agregar carro</a></li>
+        <li class="nav-item"><a href="#tabla-section"><i class="fa-solid fa-table-list"></i> Lista de carros</a></li>
+        <li class="nav-item"><a href="../login/login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
       </ul>
     </nav>
   </div>
@@ -22,7 +25,7 @@
   <div class="container">
     <h1>Control de Parqueadero - ULEAM</h1>
 
-    <section class="form-section">
+    <section class="form-section" id="formulario-section">
       <h2>Registrar Entrada</h2>
       <form id="formulario">
         <label for="placa">Placa del vehículo:</label>
@@ -52,7 +55,7 @@
       </form>
     </section>
 
-    <section class="tabla-section">
+    <section class="tabla-section" id="tabla-section">
       <div class="section-header">
         <h2>Vehículos Estacionados</h2>
         <p><span id="espacio_disponible">20</span>/20 espacios disponibles</p>
@@ -81,5 +84,10 @@
       </div>
     </section>
   </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+  AOS.init();
+</script>
 </body>
 </html>

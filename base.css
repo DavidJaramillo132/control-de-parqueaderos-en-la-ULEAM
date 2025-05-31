@@ -1,0 +1,101 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* === base.css: Estilos comunes === */
+:root {
+  --primary: #ff0e0e;
+  --primary-hover: #c00;
+  --secondary: #3498db;
+  --secondary-hover: #2980b9;
+  --dark: #ff0000;
+  --light: #f8f9fa;
+  --gray: #dfe6e9;
+  --text: #65413f;
+  --text-light: #7f8c8d;
+  --white: #ffffff;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --error: #e74c3c;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: #f8f9fa;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+input, select, button {
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+button {
+  background-color: #424242;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--dark);
+}
+
+.input-error {
+  border: 2px solid red;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 0.5rem 2rem;
+  box-shadow: var(--shadow-md);
+  height: 50px;
+}
+
+.nav img {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  padding: 5px;
+} 
+
+
+.alerta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+
+.alerta.success { background-color: var(--success); }
+.alerta.error { background-color: var(--error); }
+.alerta.warning { background-color: var(--warning); }
+.alerta.info { background-color: var(--secondary); }

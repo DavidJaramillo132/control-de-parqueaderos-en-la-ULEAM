@@ -1,49 +1,5 @@
-/* ===== VARIABLES Y ESTILOS BASE ===== */
-:root {
-  --primary: #ff0e0e;
-  --primary-hover: #c00;
-  --secondary: #3498db;
-  --secondary-hover: #2980b9;
-  --dark: #e60404;
-  --light: #f8f9fa;
-  --gray: #dfe6e9;
-  --text: #34495e;
-  --text-light: #7f8c8d;
-  --white: #ffffff;
-  --success: #2ecc71;
-  --warning: #f39c12;
-  --error: #e74c3c;
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --radius-sm: 5px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', system-ui;
-  background-color: #f8f9fa;
-  color: var(--text);
-  line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
-
-/* Contenedores */
+/* === parqueadero.css === */
 .container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -53,58 +9,6 @@ a {
   box-shadow: var(--shadow-sm);
 }
 
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-}
-
-/* Títulos */
-h1,
-h2,
-h3,
-h4 {
-  color: var(--dark);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  color: var(--primary);
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--primary);
-}
-
-/* ===== BARRA DE NAVEGACIÓN ===== */
-.nav {
-  display: flex;
-  background-color: var(--dark);
-  padding: 0 2rem;
-  box-shadow: var(--shadow-md);
-  height: 50px;
-  position: sticky;
-}
-
-.logo {
-  width: 45px;
-  height: 45px;
-}
 
 .navegacion {
   display: flex;
@@ -145,9 +49,36 @@ h2::after {
 .nav-item:hover::after {
   transform: scaleX(1);
 }
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
 
-/* ===== FORMULARIOS ===== */
-/* Formulario general */
+h1, h2, h3, h4 {
+  color: var(--dark);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -161,37 +92,32 @@ label {
   color: #34495e;
 }
 
-input,
-select {
+input, select {
   padding: 0.8rem 1rem;
   border: 1px solid #dfe6e9;
   border-radius: 8px;
   font-size: 1rem;
-  transition: all 0.3s ease;
   background-color: #f8f9fa;
 }
 
-input:focus,
-select:focus {
+input:focus, select:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--secondary);
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
   background-color: #ffffff;
 }
 
 input::placeholder {
   color: #b2bec3;
-  opacity: 1;
 }
 
-/* Sección de formulario especial */
 .form-section {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .form-section h2 {
@@ -203,8 +129,8 @@ input::placeholder {
 }
 
 #formulario button {
-  color: var(--white);
   background-color: var(--dark);
+  color: var(--white);
   border: none;
   padding: 0.9rem 1.5rem;
   text-transform: uppercase;
@@ -213,10 +139,8 @@ input::placeholder {
   font-weight: 500;
   cursor: pointer;
   position: relative;
-  transition: var(--transition);
 }
 
-/* Subrayado animado */
 #formulario button::after {
   content: '';
   position: absolute;
@@ -226,7 +150,6 @@ input::placeholder {
   height: 3px;
   background: var(--light);
   transform: scaleX(0);
-  transform-origin: center;
   transition: var(--transition);
 }
 
@@ -234,7 +157,6 @@ input::placeholder {
   transform: scaleX(1);
 }
 
-/* ===== TARJETAS DE VEHÍCULOS ===== */
 .vehicle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -256,8 +178,6 @@ input::placeholder {
   box-shadow: var(--shadow-md);
 }
 
-
-/* ===== BÚSQUEDA ===== */
 .search-box {
   position: relative;
   display: flex;
@@ -270,86 +190,18 @@ input::placeholder {
   border: 1px solid var(--gray);
   border-radius: 50px;
   font-size: 0.95rem;
-  transition: var(--transition);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .nav {
-    padding: 0 1rem;
-    height: 60px;
-  }
-
-  .nav-item {
-    padding: 0 1rem;
-  }
-
-  .container,
-  .form-section {
-    padding: 1.5rem;
-    margin: 1rem auto;
-  }
-
-  .vehicle-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===== ANIMACIONES ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Estilo para las alertas */
-.alerta {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 15px 25px;
-  border-radius: 5px;
-  color: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  animation: fadeIn 0.3s;
-}
-
-.alerta.success {
-  background-color: #2ecc71;
-}
-
-.alerta.error {
-  background-color: #e74c3c;
-}
-
-.alerta.warning {
-  background-color: #f39c12;
-}
-
-.alerta.info {
-  background-color: #3498db;
+  .nav { padding: 0 1rem; height: 60px; }
+  .nav-item { padding: 0 1rem; }
+  .container, .form-section { padding: 1.5rem; margin: 1rem auto; }
+  .vehicle-grid { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
