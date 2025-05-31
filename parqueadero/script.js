@@ -135,8 +135,8 @@ function renderVehiculo(vehiculo) {
         case 'Administrativo': borderColor = '#9b59b6'; break;
         case 'Visitante': borderColor = '#e74c3c'; break;
     }
-
-
+    card.setAttribute('data-aos', 'flip-left');
+    card.setAttribute('data-aos-duration', '800');
     card.style.borderLeft = `4px solid ${borderColor}`;
 
     // card.dataset.type = vehiculo.tipo_conductor;
@@ -189,7 +189,6 @@ function buscarVehiculo() {
         card.style.display = placa.includes(termino) ? 'block' : 'none';
     });
 }
-
 
 function mostrarAlerta(mensaje, tipo) {
     const alerta = document.createElement('div');
