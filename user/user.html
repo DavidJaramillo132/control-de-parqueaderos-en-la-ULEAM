@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="user_style.css">
+    <title>Vehículos Registrados</title>
+    <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script>
+
+</head>
+
+<body>
+  <div class="nav">
+    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
+    <nav class="navegacion">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../login/login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
+      </ul>
+    </nav>
+  </div>
+
+    <div class="contenedor">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="buscar-vehiculo" placeholder="Buscar por placa...">
+            <button id="btn-buscar">Buscar</button>
+
+        </div>
+        <h1>Su vehiculo</h1>
+        <div id="lista-vehiculos"></div>
+    </div>
+
+
+    <script src="../user/user_script.js"></script>
+</body>
+
+</html>
