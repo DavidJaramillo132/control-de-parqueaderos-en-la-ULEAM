@@ -64,7 +64,6 @@ function registrarSalida(placa) {
     }
 }
 
-
 function crearVehiculo(placa, conductor, tipo, puerta) {
     return {
         placa,
@@ -113,11 +112,6 @@ if (formulario) {
         this.reset();
     });
 }
-
-
-
-
-
 
 function renderVehiculo(vehiculo) {
     const vehicleGrid = document.getElementById(`vehiculos_${vehiculo.puerta}`);

@@ -1,0 +1,11 @@
+.contenedor {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+.search-box i {
+    padding-top: 10px;    
+}
