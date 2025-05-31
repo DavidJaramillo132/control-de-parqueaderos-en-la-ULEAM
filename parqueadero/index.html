@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de Parqueadero - ULEAM</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script>
+  <script src="script.js" defer></script>
 </head>
-
 <body>
   <div class="nav">
     <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
-    <div class="navegacion">
+    <nav class="navegacion">
       <ul class="nav-list">
-        <li class="nav-item"><a href=""><i class="fa-solid fa-car"></i> Agregar carro</a></li>
-        <li class="nav-item"><a href="../listado/lista.html"><i class="fa-solid fa-table-list"></i> Lista de carros</a>
-        </li>
+        <li class="nav-item"><a href="#"><i class="fa-solid fa-car"></i> Agregar carro</a></li>
+        <li class="nav-item"><a href="../listado/lista.html"><i class="fa-solid fa-table-list"></i> Lista de carros</a></li>
       </ul>
-    </div>
+    </nav>
   </div>
 
   <div class="container">
@@ -40,65 +39,47 @@
           <option value="Administrativo">Administrativo</option>
           <option value="Visitante">Visitante</option>
         </select>
+
         <label for="area_estacionamiento">Lugar de estacionamiento:</label>
-        <select id="tipo_conductor" required>
+        <select id="area_estacionamiento" required>
           <option value="">Seleccione...</option>
-          <option value="Estacionamiento Puerta 1">Estacionamiento Puerta 1</option>
-          <option value="Estacionamiento Puerta 2">Estacionamiento Puerta 2</option>
-          <option value="Estacionamiento Puerta 3">Estacionamiento Puerta 3</option>
+          <option value="Puerta_1">Estacionamiento Puerta 1</option>
+          <option value="Puerta_2">Estacionamiento Puerta 2</option>
+          <option value="Puerta_3">Estacionamiento Puerta 3</option>
         </select>
+
         <button type="submit">Registrar Vehículo</button>
       </form>
     </section>
-    
+
     <section class="tabla-section">
       <div class="section-header">
         <h2>Vehículos Estacionados</h2>
         <p><span id="espacio_disponible">20</span>/20 espacios disponibles</p>
         <div class="search-box">
-          <input type="text" id="search-vehicle" placeholder="Buscar por placa...">
           <i class="fas fa-search"></i>
+          <input type="text" id="search-vehicle" placeholder="Buscar por placa...">
         </div>
       </div>
 
-      <div class="vehicle-grid" id="cartar_de_vehiculos">
-        <!-- Las tarjetas se insertarán dinámicamente aquí -->
+      <div class="Contenedor-estacionamiento">
+        <h3 class="subtitle-parqueadero">Estacionamiento Puerta 1</h3>
+        <p><span class="espacio-puerta" id="espacio_Puerta_1">0</span>/7 espacios disponibles</p>
+        <div class="vehicle-grid" id="vehiculos_Puerta_1"></div>
+      </div>
+
+      <div class="Contenedor-estacionamiento">
+        <h3 class="subtitle-parqueadero">Estacionamiento Puerta 2</h3>
+        <p><span class="espacio-puerta" id="espacio_Puerta_2">0</span>/7 espacios disponibles</p>
+        <div class="vehicle-grid" id="vehiculos_Puerta_2"></div>
+      </div>
+
+      <div class="Contenedor-estacionamiento">
+        <h3 class="subtitle-parqueadero">Estacionamiento Puerta 3</h3>
+        <p><span class="espacio-puerta" id="espacio_Puerta_3">0</span>/6 espacios disponibles</p>
+        <div class="vehicle-grid" id="vehiculos_Puerta_3"></div>
       </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
   </div>
-  <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
 </body>
-
 </html>
