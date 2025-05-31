@@ -1,133 +1,209 @@
 // Configuración inicial
 const ESPACIO_TOTAL = 20;
+const LIMITES_PUERTAS = {
+    Puerta_1: 7,
+    Puerta_2: 7,
+    Puerta_3: 6
+};
 let vehiculos = [];
 
-// Inicialización
+// utils/localStorage
+function guardarEnLocalStorage() {
+    localStorage.setItem('vehiculos_parqueadero', JSON.stringify(vehiculos));
+}
+
+function cargarDesdeLocalStorage() {
+    const datos = localStorage.getItem('vehiculos_parqueadero');
+    if (datos) {
+        vehiculos = JSON.parse(datos);
+        vehiculos.forEach(renderVehiculo);
+        actualizarEspaciosDisponibles();
+    }
+}
+
+// DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
-  actualizarEspaciosDisponibles();
-  document.getElementById('search-vehicle').addEventListener('input', buscarVehiculo);
+    if (!document.getElementById('search-vehicle')) {
+        console.error('Elemento search-vehicle no encontrado');
+        return;
+    }
+
+    if (document.getElementById('espacio_disponible') &&
+        document.getElementById('vehiculos_Puerta_1') &&
+        document.getElementById('vehiculos_Puerta_2') &&
+        document.getElementById('vehiculos_Puerta_3')) {
+        
+        cargarDesdeLocalStorage();
+        document.getElementById('search-vehicle').addEventListener('input', buscarVehiculo);
+    } else {
+        console.error('Elementos del DOM necesarios no encontrados');
+    }
 });
 
-// Manejo del formulario
-document.getElementById('formulario').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const placa = document.getElementById('placa').value.trim().toUpperCase();
-  const conductor = document.getElementById('conductor').value.trim();
-  const tipo_conductor = document.getElementById('tipo_conductor').value;
-
-  if (!validarFormulario(placa, conductor, tipo_conductor)) return;
-  
-  if (vehiculos.length >= ESPACIO_TOTAL) {
-    mostrarAlerta('El parqueadero está lleno. No hay espacios disponibles.', 'error');
-    return;
-  }
-
-  const vehiculo = crearVehiculo(placa, conductor, tipo_conductor);
-  agregarVehiculo(vehiculo);
-  this.reset();
-});
-
-// Funciones auxiliares
-function validarFormulario(placa, conductor, tipo) {
-  if (!placa || !conductor || !tipo) {
-    mostrarAlerta('Por favor, complete todos los campos.', 'warning');
-    return false;
-  }
-  
-  if (vehiculos.some(v => v.placa === placa)) {
-    mostrarAlerta('Esta placa ya está registrada en el parqueadero.', 'error');
-    return false;
-  }
-  
-  return true;
-}
-
-function crearVehiculo(placa, conductor, tipo) {
-  return {
-    placa,
-    conductor,
-    tipo_conductor: tipo,
-    hora_entrada: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    fecha_entrada: new Date().toLocaleDateString(),
-    timestamp: Date.now()
-  };
-}
-
+// En agregarVehiculo
 function agregarVehiculo(vehiculo) {
-  vehiculos.push(vehiculo);
-  renderVehiculo(vehiculo);
-  actualizarEspaciosDisponibles();
-  mostrarAlerta(`Vehículo ${vehiculo.placa} registrado exitosamente.`, 'success');
+    vehiculos.push(vehiculo);
+    guardarEnLocalStorage();
+    renderVehiculo(vehiculo);
+    actualizarEspaciosDisponibles();
+    mostrarAlerta(`Vehículo ${vehiculo.placa} registrado en ${reemplazarGuionBajo(vehiculo.puerta)}.`, 'success');
 }
 
-// Renderizado de vehículos
+// En registrarSalida
+function registrarSalida(placa) {
+    const vehiculo = vehiculos.find(v => v.placa === placa);
+    if (vehiculo) {
+        vehiculos = vehiculos.filter(v => v.placa !== placa);
+        guardarEnLocalStorage();
+        const card = document.querySelector(`.vehicle-card[data-placa="${placa}"]`);
+        if (card) {
+            card.remove();
+        }
+        actualizarEspaciosDisponibles();
+        mostrarAlerta(`Vehículo ${placa} ha sido retirado de ${reemplazarGuionBajo(vehiculo.puerta)}.`, 'info');
+    }
+}
+
+
+function crearVehiculo(placa, conductor, tipo, puerta) {
+    return {
+        placa,
+        conductor,
+        tipo_conductor: tipo,
+        puerta,
+        hora_entrada: new Date().toLocaleTimeString(),
+        fecha_entrada: new Date().toLocaleDateString(),
+        timestamp: Date.now()
+    };
+}
+// Manejo del formulario
+const formulario = document.getElementById('formulario');
+if (formulario) {
+    formulario.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const placa = document.getElementById('placa')?.value.trim().toUpperCase();
+        const conductor = document.getElementById('conductor')?.value.trim();
+        const tipo_conductor = document.getElementById('tipo_conductor')?.value;
+        const puerta = document.getElementById('area_estacionamiento')?.value;
+
+        if (!placa || !conductor || !tipo_conductor || !puerta) {
+            mostrarAlerta('Por favor, complete todos los campos.', 'warning');
+            return;
+        }
+
+        if (vehiculos.some(v => v.placa === placa)) {
+            mostrarAlerta('Esta placa ya está registrada en el parqueadero.', 'error');
+            return;
+        }
+
+        if (vehiculos.length >= ESPACIO_TOTAL) {
+            mostrarAlerta('El parqueadero está lleno. No hay espacios disponibles.', 'error');
+            return;
+        }
+
+        const vehiculosEnPuerta = vehiculos.filter(v => v.puerta === puerta).length;
+        if (vehiculosEnPuerta >= LIMITES_PUERTAS[puerta]) {
+            mostrarAlerta(`La ${reemplazarGuionBajo(puerta)} está llena. Por favor seleccione otra área.`, 'error');
+            return;
+        }
+
+        const vehiculo = crearVehiculo(placa, conductor, tipo_conductor, puerta);
+        agregarVehiculo(vehiculo);
+        this.reset();
+    });
+}
+
+
+
+
+
+
 function renderVehiculo(vehiculo) {
-  const vehicleGrid = document.getElementById('cartar_de_vehiculos');
-  
-  const card = document.createElement('div');
-  card.className = 'vehicle-card';
-  card.dataset.type = vehiculo.tipo_conductor;
-  card.dataset.placa = vehiculo.placa;
-  
-  card.innerHTML = `
-    <h3>${vehiculo.placa}</h3>
-    <p><strong>Conductor:</strong> ${vehiculo.conductor}</p>
-    <p><strong>Tipo:</strong> ${vehiculo.tipo_conductor}</p>
-    <div class="vehicle-meta">
-      <span>${vehiculo.hora_entrada}</span>
-      <span>${vehiculo.fecha_entrada}</span>
-    </div>
-    <button class="btn-salida" data-placa="${vehiculo.placa}">Registrar Salida</button>
-  `;
-  
-  vehicleGrid.appendChild(card);
-  
-  // Agregar evento al botón de salida
-  card.querySelector('.btn-salida').addEventListener('click', function() {
-    registrarSalida(vehiculo.placa);
-  });
+    const vehicleGrid = document.getElementById(`vehiculos_${vehiculo.puerta}`);
+    if (!vehicleGrid) {
+        console.error(`Contenedor vehiculos_${vehiculo.puerta} no encontrado`);
+        return;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'vehicle-card';
+
+    switch (vehiculo.tipo_conductor) {
+        case 'Estudiante': borderColor = '#2ecc71'; break;
+        case 'Docente': borderColor = '#e67e22'; break;
+        case 'Administrativo': borderColor = '#9b59b6'; break;
+        case 'Visitante': borderColor = '#e74c3c'; break;
+    }
+
+
+    card.style.borderLeft = `4px solid ${borderColor}`;
+
+    // card.dataset.type = vehiculo.tipo_conductor;
+    card.dataset.placa = vehiculo.placa;
+    // card.dataset.puerta = vehiculo.puerta;
+
+    card.innerHTML = `
+        <h3>${vehiculo.placa}</h3>
+        <p><strong>Conductor:</strong> ${vehiculo.conductor}</p>
+        <p><strong>Tipo:</strong> ${vehiculo.tipo_conductor}</p>
+        <p><strong>Ubicación:</strong> ${reemplazarGuionBajo(vehiculo.puerta)}</p>
+        <div class="vehicle-meta">
+            <span>${vehiculo.hora_entrada}</span>
+            <span>${vehiculo.fecha_entrada}</span>
+        </div>
+        <button class="btn-salida" data-placa="${vehiculo.placa}">Registrar Salida</button>
+    `;
+
+    vehicleGrid.appendChild(card);
+
+    card.querySelector('.btn-salida').addEventListener('click', function () {
+        registrarSalida(vehiculo.placa);
+    });
 }
 
-// Funciones de utilidad
 function actualizarEspaciosDisponibles() {
-  const disponibles = ESPACIO_TOTAL - vehiculos.length;
-  document.getElementById('espacio_disponible').textContent = disponibles;
-  
-  // Actualizar barra de capacidad
-  const porcentaje = (disponibles / ESPACIO_TOTAL) * 100;
-  document.getElementById('capacity-bar').style.width = `${porcentaje}%`;
-  
-  // Cambiar color según disponibilidad
-  const capacityBar = document.getElementById('capacity-bar');
-  if (porcentaje < 20) {
-    capacityBar.style.background = 'linear-gradient(90deg, #e74c3c, #c0392b)';
-  } else if (porcentaje < 50) {
-    capacityBar.style.background = 'linear-gradient(90deg, #f39c12, #e67e22)';
-  } else {
-    capacityBar.style.background = 'linear-gradient(90deg, #2ecc71, #27ae60)';
-  }
+    const totalDisponible = ESPACIO_TOTAL - vehiculos.length;
+    const espacioDisponibleTotal = document.getElementById('espacio_disponible');
+    if (espacioDisponibleTotal) {
+        espacioDisponibleTotal.textContent = totalDisponible;
+    }
+
+    // Actualizar por puerta
+    Object.keys(LIMITES_PUERTAS).forEach(puerta => {
+        const count = vehiculos.filter(v => v.puerta === puerta).length;
+        const disponibles = LIMITES_PUERTAS[puerta] - count;
+        const espacioPuertaEl = document.getElementById(`espacio_${puerta}`);
+        if (espacioPuertaEl) {
+            espacioPuertaEl.textContent = disponibles;
+        }
+    });
 }
 
 function buscarVehiculo() {
-  const termino = this.value.toLowerCase();
-  const cards = document.querySelectorAll('.vehicle-card');
-  
-  cards.forEach(card => {
-    const placa = card.dataset.placa.toLowerCase();
-    card.style.display = placa.includes(termino) ? 'block' : 'none';
-  });
+    const termino = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.vehicle-card');
+
+    cards.forEach(card => {
+        const placa = card.dataset.placa.toLowerCase();
+        card.style.display = placa.includes(termino) ? 'block' : 'none';
+    });
 }
 
-function registrarSalida(placa) {
-  vehiculos = vehiculos.filter(v => v.placa !== placa);
-  document.querySelector(`.vehicle-card[data-placa="${placa}"]`).remove();
-  actualizarEspaciosDisponibles();
-  mostrarAlerta(`Vehículo ${placa} ha sido retirado.`, 'info');
-}
 
 function mostrarAlerta(mensaje, tipo) {
-  // Implementar un sistema de notificaciones bonito
-  console.log(`[${tipo.toUpperCase()}] ${mensaje}`);
-  // Puedes usar Toastify, SweetAlert o similar aquí
+    const alerta = document.createElement('div');
+    alerta.className = `alerta ${tipo}`;
+    alerta.textContent = mensaje;
+
+    document.body.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
 }
+
+function reemplazarGuionBajo(texto) {
+    return texto.replace(/_/g, ' ');
+}
+
