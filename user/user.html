@@ -1,39 +1,32 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="stylesheet" href="user_style.css">
-    <title>Vehículos Registrados</title>
-    <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script>
-
-</head>
-
-<body>
-  <div class="nav">
-    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
-    <nav class="navegacion">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="../login/login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
+<!DOCTYPE html> <!-- Declara el tipo de documento como HTML5 -->
+<html lang="es"> <!-- Inicia el elemento raíz HTML y especifica que el idioma del contenido es español -->
+<head> <!-- Inicia la sección de encabezado del documento -->
+    <meta charset="UTF-8" /> <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura el diseño para que sea responsive en dispositivos móviles -->
+    <link rel="stylesheet" href="../base.css" /> <!-- Vincula una hoja de estilo CSS externa (base.css) ubicada un nivel arriba en la jerarquía de carpetas -->
+    <link rel="stylesheet" href="user_style.css"> <!-- Vincula una hoja de estilo CSS externa (user_style.css) ubicada en el mismo directorio -->
+    <title>Vehículos Registrados</title> <!-- Establece el título de la página que se muestra en la pestaña del navegador -->
+    <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script> <!-- Carga el kit de iconos de FontAwesome -->
+</head> <!-- Cierra la sección de encabezado -->
+<body> <!-- Inicia el cuerpo del documento, donde se encuentra el contenido visible -->
+  <div class="nav"> <!-- Contenedor principal para la barra de navegación -->
+    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo"> <!-- Muestra el logo de la universidad con una clase de estilo -->
+    <nav class="navegacion"> <!-- Inicia el elemento de navegación -->
+      <ul class="nav-list"> <!-- Lista no ordenada que representa los elementos de navegación -->
+        <li class="nav-item"> <!-- Elemento individual de la lista -->
+            <a href="../login/login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li> <!-- Enlace para salir o cerrar sesión con un icono  -->
       </ul>
-    </nav>
-  </div>
-
-    <div class="contenedor">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="buscar-vehiculo" placeholder="Buscar por placa...">
-            <button id="btn-buscar">Buscar</button>
-
-        </div>
-        <h1>Su vehiculo</h1>
-        <div id="lista-vehiculos"></div>
-    </div>
-
-
-    <script src="../user/user_script.js"></script>
-</body>
-
-</html>
+    </nav> <!-- Cierra el elemento de navegación -->
+  </div> <!-- Cierra el contenedor de la barra de navegación -->
+    <div class="contenedor"> <!-- Contenedor principal del contenido de la página -->
+        <div class="search-box"> <!-- Caja de búsqueda -->
+            <i class="fas fa-search"></i> <!-- Icono de búsqueda de FontAwesome -->
+            <input type="text" id="buscar-vehiculo" placeholder="Buscar por placa..."> <!-- Campo de texto para buscar vehículos por placa -->
+            <button id="btn-buscar">Buscar</button> <!-- Botón para iniciar la búsqueda -->
+        </div> <!-- Cierra la caja de búsqueda -->
+        <h1>Su vehiculo</h1> <!-- Encabezado principal de la sección -->
+        <div id="lista-vehiculos"></div> <!-- Contenedor donde se listarán los vehículos registrados -->
+    </div> <!-- Cierra el contenedor principal -->
+    <script src="../user/user_script.js"></script> <!-- Vincula un archivo JavaScript externo que contiene la lógica para esta página -->
+</body> <!-- Cierra el cuerpo del documento -->
+</html> <!-- Cierra el documento HTML -->

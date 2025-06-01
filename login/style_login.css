@@ -1,40 +1,39 @@
 /* === login.css === */
+/* Estilos para el contenedor principal del login */
 .interfaz-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f9f8f8;
+  display: flex; /* Usa flexbox para alinear contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa el 100% del alto de la ventana */
+  background-color: #f9f8f8; /* Color de fondo claro */
 }
-
+/* Contenedor de los inputs y botón del formulario de login */
 .login-input {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  border: 2px solid #f4f4f4;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 15px 15px 20px rgba(49, 44, 44, 0.1);
+  display: flex; /* Usa flexbox para disposición de columnas */
+  flex-direction: column; /* Alinea los hijos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 40px; /* Espaciado interno */
+  border: 2px solid #f4f4f4; /* Borde claro */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: white; /* Fondo blanco */
+  box-shadow: 15px 15px 20px rgba(49, 44, 44, 0.1); /* Sombra suave para dar profundidad */
 }
-
+/* Estilos para los campos de entrada (usuario y contraseña) */
 .login-input input {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 40vh;
+  padding: 10px; /* Espaciado interno en los inputs */
+  margin: 5px; /* Margen entre cada input */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde gris claro */
+  width: 40vh; /* Ancho relativo al alto de la ventana */
 }
-
+/* Estilo para el botón */
 .login-input button {
-  margin-top: 10px;
+  margin-top: 10px; /* Espacio superior respecto al input anterior */
+}
+/* Estilo para el texto "¿Olvidó su contraseña?" */
+.login-input p {
+  margin-top: 10px; /* Separación respecto al botón */
+  color: #424242; /* Color gris oscuro */
+  cursor: pointer; /* Cambia el cursor a mano al pasar encima */
 }
 
-.login-input p {
-  margin-top: 10px;
-  color: #424242;
-  cursor: pointer;
-}
-.login-input p:hover {
-  color: var(--dark);
-}

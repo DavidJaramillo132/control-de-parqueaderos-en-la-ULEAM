@@ -1,28 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html> <!-- Declaración del tipo de documento: HTML5 -->
+<html lang="en"> <!-- Comienzo del documento HTML, con idioma inglés -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="../base.css">
-    <link rel="stylesheet" href="style_login.css">
-    
+    <meta charset="UTF-8"> <!-- Codificación de caracteres en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace el sitio web responsive en dispositivos móviles -->
+    <title>login</title> <!-- Título de la pestaña del navegador -->
+    <!-- Hojas de estilo externas -->
+    <link rel="stylesheet" href="../base.css"> <!-- Estilos base comunes -->
+    <link rel="stylesheet" href="style_login.css"> <!-- Estilos específicos para la página de login -->
 </head>
 
-<body>
-    <div class="nav">
-        <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
+<body> <!-- Cuerpo del documento -->
+    <div class="nav"> <!-- Contenedor para la barra de navegación o encabezado -->
+        <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo"> <!-- Logo institucional -->
     </div>
-    <div class="interfaz-login">
-        <div class="login-input">
+    <div class="interfaz-login"> <!-- Contenedor principal de la interfaz de login -->
+        <div class="login-input"> <!-- Contenedor de los campos de entrada -->
+            <!-- Imagen del login (decorativa o institucional) -->
             <img src="../assets/img/login/ULEAM.png" alt="" srcset="">
+            <!-- Campo de texto para el nombre de usuario -->
             <input type="text" placeholder="Usuario" id="user" required>
+            <!-- Campo de texto para la contraseña (debería ser tipo password idealmente) -->
             <input type="text" placeholder="Contraseña" id="password" required>
+            <!-- Botón para iniciar sesión, llama a la función login() al hacer clic -->
             <button type="button" onclick="login()">Ingresar</button>
+            <!-- Enlace informativo para recuperar contraseña -->
             <p>¿Olvidó su contraseña?</p>
         </div>
+    </div> <!-- Fin de interfaz-login -->
 </body>
+<!-- Script JavaScript que contiene la función login() -->
 <script src="code_login.js"></script>
 
 </html>
