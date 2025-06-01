@@ -1,181 +1,165 @@
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Habilita el desplazamiento suave al hacer clic en enlaces de anclaje */
 }
 
 /* === base.css: Estilos comunes === */
 :root {
-  --primary: #ff0e0e;
-  --primary-hover: #c00;
-  --secondary: #3498db;
-  --secondary-hover: #2980b9;
-  --dark: #ff0000;
-  --light: #f8f9fa;
-  --gray: #dfe6e9;
-  --text: #65413f;
-  --text-light: #7f8c8d;
-  --white: #ffffff;
-  --success: #2ecc71;
-  --warning: #f39c12;
-  --error: #e74c3c;
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --radius-sm: 5px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Definición de variables CSS para colores, sombras, radios y transiciones */
+  --primary: #ff0e0e; /* Color primario */
+  --primary-hover: #c00; /* Color primario en estado hover */
+  --secondary: #3498db; /* Color secundario */
+  --secondary-hover: #2980b9; /* Color secundario en hover */
+  --dark: #ff0000; /* Color oscuro (rojo fuerte) */
+  --light: #f8f9fa; /* Color claro */
+  --gray: #dfe6e9; /* Color gris claro */
+  --text: #65413f; /* Color del texto principal */
+  --text-light: #7f8c8d; /* Color del texto en tono más claro */
+  --white: #ffffff; /* Color blanco */
+  --success: #2ecc71; /* Color para mensajes de éxito */
+  --warning: #f39c12; /* Color para advertencias */
+  --error: #e74c3c; /* Color para errores */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra pequeña */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mediana */
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2); /* Sombra grande */
+  --radius-sm: 5px; /* Radio pequeño para bordes */
+  --radius-md: 10px; /* Radio mediano para bordes */
+  --radius-lg: 12px; /* Radio grande para bordes */
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave para animaciones */
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box; /* Incluye el padding y border en el tamaño total del elemento */
+  margin: 0; /* Elimina el margen predeterminado */
+  padding: 0; /* Elimina el padding predeterminado */
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background-color: #f8f9fa;
-  color: var(--text);
-  line-height: 1.6;
+  font-family: 'Segoe UI', system-ui, sans-serif; /* Fuente principal del sitio */
+  background-color: #f8f9fa; /* Color de fondo claro */
+  color: var(--text); /* Color de texto principal */
+  line-height: 1.6; /* Altura de línea */
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  color: inherit; /* Hereda el color del texto del padre */
+  transition: var(--transition); /* Aplica la transición definida a interacciones */
 }
-
 input, select, button {
-  font-family: inherit;
-  transition: var(--transition);
+  font-family: inherit; /* Hereda la fuente del body */
+  transition: var(--transition); /* Transiciones suaves en interacciones */
 }
-
 button {
-  background-color: #424242;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #424242; /* Fondo gris oscuro */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interior */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
 }
 button:hover {
-  background-color: var(--dark);
+  background-color: var(--dark); /* Cambia el fondo al pasar el mouse (color rojo fuerte) */
 }
-
 .input-error {
-  border: 2px solid red;
+  border: 2px solid red; /* Borde rojo para campos con error */
 }
-
 .nav {
-  display: flex;
-  align-items: center;
-  background-color: var(--primary);
-  padding: 0.5rem 2rem;
-  box-shadow: var(--shadow-md);
-  height: 50px;
+  display: flex; /* Usa Flexbox para alinear elementos */
+  align-items: center; /* Centra verticalmente */
+  background-color: var(--primary); /* Fondo rojo (color primario) */
+  padding: 0.5rem 2rem; /* Espaciado interior */
+  box-shadow: var(--shadow-md); /* Sombra mediana */
+  height: 50px; /* Altura fija de la barra de navegación */
 }
-
 .nav img {
-  width: 50px;
-  height: 50px;
-  margin-left: 10px;
-  padding: 5px;
+  width: 50px; /* Ancho del logo */
+  height: 50px; /* Alto del logo */
+  margin-left: 10px; /* Espacio a la izquierda */
+  padding: 5px; /* Espacio interno */
 } 
-
-
 .navegacion {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+  display: flex; /* Flexbox para elementos internos */
+  align-items: center; /* Centrado vertical */
+  margin-left: auto; /* Empuja la navegación a la derecha */
 }
-
-
 .nav-list {
-  height: 100%;
-  list-style: none;
-  display: flex;
+  height: 100%; /* Altura completa del contenedor padre */
+  list-style: none; /* Quita los estilos de lista */
+  display: flex; /* Flexbox para alinear ítems */
 }
-
 .nav-item {
-  color: var(--white);
-  cursor: pointer;
-  padding: 0 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: var(--transition);
-  font-weight: 500;
-  position: relative;
+  color: var(--white); /* Color de texto blanco */
+  cursor: pointer; /* Cursor tipo mano */
+  padding: 0 1.5rem; /* Espaciado horizontal */
+  display: flex; /* Flexbox */
+  align-items: center; /* Centrado vertical */
+  gap: 0.5rem; /* Espaciado entre icono y texto */
+  transition: var(--transition); /* Transición suave */
+  font-weight: 500; /* Peso de fuente medio */
+  position: relative; /* Necesario para el pseudo-elemento ::after */
 }
-
 .nav-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--light);
-  transform: scaleX(0);
-  transition: var(--transition);
+  content: ''; /* Crea un elemento decorativo */
+  position: absolute; /* Posición absoluta respecto al nav-item */
+  bottom: 0; /* Lo ubica al fondo del nav-item */
+  left: 0; /* Alineado a la izquierda */
+  width: 100%; /* Ancho completo */
+  height: 3px; /* Grosor de la línea */
+  background: var(--light); /* Color claro */
+  transform: scaleX(0); /* Comienza invisible (escala en X a 0) */
+  transition: var(--transition); /* Transición suave al hacer hover */
 }
-
 .nav-item:hover::after {
-  transform: scaleX(1);
+  transform: scaleX(1); /* Muestra la línea decorativa al hacer hover */
 }
-
-
 .alerta {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 15px 25px;
-  border-radius: 5px;
-  color: white;
-  box-shadow: var(--shadow-md);
-  z-index: 1000;
-  animation: fadeIn 0.3s;
+  position: fixed; /* Se mantiene en posición fija */
+  top: 20px; /* Desde el borde superior */
+  right: 20px; /* Desde el borde derecho */
+  padding: 15px 25px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  color: white; /* Texto blanco */
+  box-shadow: var(--shadow-md); /* Sombra */
+  z-index: 1000; /* Se mantiene por encima del resto */
+  animation: fadeIn 0.3s; /* Animación de aparición */
 }
 
-.alerta.success { background-color: var(--success); }
-.alerta.error { background-color: var(--error); }
-.alerta.warning { background-color: var(--warning); }
-.alerta.info { background-color: var(--secondary); }
-
-
-
+.alerta.success { background-color: var(--success); } /* Alerta tipo éxito */
+.alerta.error { background-color: var(--error); } /* Alerta tipo error */
+.alerta.warning { background-color: var(--warning); } /* Alerta tipo advertencia */
+.alerta.info { background-color: var(--secondary); } /* Alerta tipo informativa */
 
 .vehicle-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  display: grid; /* Usa Grid para mostrar los vehículos */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas responsivas de mínimo 300px */
+  gap: 1.5rem; /* Espaciado entre tarjetas */
+  margin-top: 1.5rem; /* Margen superior */
 }
 
 .vehicle-card {
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
+  border-radius: var(--radius-md); /* Bordes redondeados medianos */
+  padding: 1.5rem; /* Espaciado interior */
+  box-shadow: var(--shadow-sm); /* Sombra ligera */
+  transition: var(--transition); /* Transición suave al hacer hover */
+  position: relative; /* Posición relativa para controlar contenido interno */
+  overflow: hidden; /* Oculta el desbordamiento */
 }
 
 .vehicle-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-5px); /* Levanta ligeramente la tarjeta */
+  box-shadow: var(--shadow-md); /* Aplica una sombra más grande al hacer hover */
 }
 
 .search-box {
-  position: relative;
-  display: flex;
-  min-width: 250px;
+  position: relative; /* Posición relativa */
+  display: flex; /* Flexbox para alinear elementos */
+  min-width: 250px; /* Ancho mínimo */
 }
 
 .search-box input {
-  margin-left: 15px;
-  width: 100%;
-  border: 1px solid var(--gray);
-  border-radius: 50px;
-  font-size: 0.95rem;
+  margin-left: 15px; /* Margen izquierdo */
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: 1px solid var(--gray); /* Borde gris claro */
+  border-radius: 50px; /* Borde redondeado tipo pastilla */
+  font-size: 0.95rem; /* Tamaño de fuente */
 }

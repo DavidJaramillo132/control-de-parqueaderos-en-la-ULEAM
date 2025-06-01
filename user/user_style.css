@@ -1,11 +1,13 @@
+/* Clase .contenedor: define un área central con un fondo blanco y bordes redondeados */
 .contenedor {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 12px;
+    max-width: 500px; /* Limita el ancho máximo a 500px */
+    margin: 2rem auto; /* Centra el contenedor horizontalmente y le da un margen vertical de 2rem */
+    padding: 2rem; /* Espaciado interno de 2rem en todos los lados */
+    background: #ffffff; /* Fondo blanco */
+    border-radius: 12px; /* Bordes redondeados de 12px */
 }
 
+/* Estilo para el ícono dentro de un elemento con clase .search-box */
 .search-box i {
-    padding-top: 10px;    
+    padding-top: 10px; /* Añade un espacio superior de 10px al ícono, útil para alinearlo verticalmente */
 }

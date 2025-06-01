@@ -1,39 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="es"> <!-- Lenguaje principal: español -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Control de Parqueadero - ULEAM</title>
-  <link rel="stylesheet" href="../base.css">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptabilidad a dispositivos móviles -->
+  <title>Control de Parqueadero - ULEAM</title> <!-- Título que aparece en la pestaña del navegador -->
+  <!-- Hojas de estilo CSS -->
+  <link rel="stylesheet" href="../base.css"> <!-- Estilo base compartido -->
+  <link rel="stylesheet" href="style.css"> <!-- Estilo específico de esta página -->
+  <!-- Librería de animaciones AOS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Iconos de Font Awesome -->
   <script src="https://kit.fontawesome.com/e0dd335539.js" crossorigin="anonymous" defer></script>
+  <!-- Script propio con defer para cargarlo al final -->
   <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Barra de navegación -->
   <div class="nav">
-    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo">
+    <img src="../assets/img/global/uleamIcon.png" alt="Logo ULEAM" class="logo"> <!-- Logo de la universidad -->
     <nav class="navegacion">
       <ul class="nav-list">
+        <!-- Enlace al formulario para registrar -->
         <li class="nav-item"><a href="#formulario-section"><i class="fa-solid fa-car"></i> Agregar carro</a></li>
+        <!-- Enlace a la tabla de vehículos -->
         <li class="nav-item"><a href="#tabla-section"><i class="fa-solid fa-table-list"></i> Lista de carros</a></li>
+        <!-- Enlace para cerrar sesión -->
         <li class="nav-item"><a href="../login/login.html"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
       </ul>
     </nav>
   </div>
-
+  <!-- Contenido principal -->
   <div class="container">
-    <h1>Control de Parqueadero - ULEAM</h1>
-
+    <h1>Control de Parqueadero - ULEAM</h1> <!-- Título principal -->
+    <!-- Sección del formulario de registro -->
     <section class="form-section" id="formulario-section">
       <h2>Registrar Entrada</h2>
       <form id="formulario">
+        <!-- Campo para ingresar la placa -->
         <label for="placa">Placa del vehículo:</label>
         <input type="text" id="placa" placeholder="Ej: ABC-1234" required>
-
+        <!-- Campo para nombre del conductor -->
         <label for="conductor">Nombre del conductor:</label>
         <input type="text" id="conductor" placeholder="Ej: Juan Pérez" required>
-
+        <!-- Selección del tipo de usuario -->
         <label for="tipo_conductor">Tipo de usuario:</label>
         <select id="tipo_conductor" required>
           <option value="">Seleccione...</option>
@@ -42,7 +51,7 @@
           <option value="Administrativo">Administrativo</option>
           <option value="Visitante">Visitante</option>
         </select>
-
+        <!-- Selección del lugar de parqueo -->
         <label for="area_estacionamiento">Lugar de estacionamiento:</label>
         <select id="area_estacionamiento" required>
           <option value="">Seleccione...</option>
@@ -50,33 +59,33 @@
           <option value="Puerta_2">Estacionamiento Puerta 2</option>
           <option value="Puerta_3">Estacionamiento Puerta 3</option>
         </select>
-
+        <!-- Botón para registrar vehículo -->
         <button type="submit">Registrar Vehículo</button>
       </form>
     </section>
-
+    <!-- Sección de visualización de vehículos -->
     <section class="tabla-section" id="tabla-section">
       <div class="section-header">
         <h2>Vehículos Estacionados</h2>
+        <!-- Cantidad total de espacios disponibles -->
         <p><span id="espacio_disponible">20</span>/20 espacios disponibles</p>
+        <!-- Barra de búsqueda por placa -->
         <div class="search-box">
           <i class="fas fa-search"></i>
           <input type="text" id="search-vehicle" placeholder="Buscar por placa...">
         </div>
       </div>
-
+      <!-- Contenedor para cada puerta -->
       <div class="Contenedor-estacionamiento">
         <h3 class="subtitle-parqueadero">Estacionamiento Puerta 1</h3>
         <p><span class="espacio-puerta" id="espacio_Puerta_1">0</span>/7 espacios disponibles</p>
         <div class="vehicle-grid" id="vehiculos_Puerta_1"></div>
       </div>
-
       <div class="Contenedor-estacionamiento">
         <h3 class="subtitle-parqueadero">Estacionamiento Puerta 2</h3>
         <p><span class="espacio-puerta" id="espacio_Puerta_2">0</span>/7 espacios disponibles</p>
         <div class="vehicle-grid" id="vehiculos_Puerta_2"></div>
       </div>
-
       <div class="Contenedor-estacionamiento">
         <h3 class="subtitle-parqueadero">Estacionamiento Puerta 3</h3>
         <p><span class="espacio-puerta" id="espacio_Puerta_3">0</span>/6 espacios disponibles</p>
@@ -84,10 +93,10 @@
       </div>
     </section>
   </div>
+  <!-- Scripts de animaciones AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
   <script>
-  AOS.init();
-</script>
+    AOS.init(); // Inicializa las animaciones de scroll
+  </script>
 </body>
 </html>
