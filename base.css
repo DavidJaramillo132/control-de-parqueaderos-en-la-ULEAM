@@ -123,11 +123,24 @@ button:hover {
   z-index: 1000; /* Se mantiene por encima del resto */
   animation: fadeIn 0.3s; /* Animación de aparición */
 }
+/* Alerta tipo éxito */
+.alerta.success { 
+  background-color: var(--success); 
+} 
+/* Alerta tipo error */
 
-.alerta.success { background-color: var(--success); } /* Alerta tipo éxito */
-.alerta.error { background-color: var(--error); } /* Alerta tipo error */
-.alerta.warning { background-color: var(--warning); } /* Alerta tipo advertencia */
-.alerta.info { background-color: var(--secondary); } /* Alerta tipo informativa */
+.alerta.error { 
+  background-color: var(--error); 
+} 
+/* Alerta tipo advertencia */
+.alerta.warning { 
+  background-color: var(--warning); 
+} 
+
+/* Alerta tipo informativa */
+.alerta.info { 
+  background-color: var(--secondary); 
+} 
 
 .vehicle-grid {
   display: grid; /* Usa Grid para mostrar los vehículos */
